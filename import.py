@@ -24,6 +24,8 @@ def get_quizz_filename(categorie, titre, difficulte):
 def generate_json_file(categorie, titre, url):
     out_questionnaire_data = {"categorie": categorie, "titre": titre, "questions": []}
     out_questions_data = []
+    for i in open_quizz_db_data:
+        url = i[2]
     response = requests.get(url)
     data = json.loads(response.text)
     all_quizz = data["quizz"]["fr"]
