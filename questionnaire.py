@@ -38,7 +38,7 @@ class Question:
 
         print()
         resultat_response_correcte = False
-        reponse_int = Question.demander_reponse_numerique_utlisateur(1, len(self.choix))
+        reponse_int = Question.demander_reponse_numerique_utilisateur(self, 1, len(self.choix))
         if self.choix[reponse_int-1].lower() == self.bonne_reponse.lower():
             print("Bonne réponse")
             resultat_response_correcte = True
@@ -48,7 +48,7 @@ class Question:
         print()
         return resultat_response_correcte
 
-    def demander_reponse_numerique_utlisateur(min, max):
+    def demander_reponse_numerique_utilisateur(self, min, max):
         reponse_str = input("Votre réponse (entre " + str(min) + " et " + str(max) + ") :")
         try:
             reponse_int = int(reponse_str)
@@ -58,8 +58,9 @@ class Question:
             print("ERREUR : Vous devez rentrer un nombre entre", min, "et", max)
         except:
             print("ERREUR : Veuillez rentrer uniquement des chiffres")
-        return Question.demander_reponse_numerique_utlisateur(min, max)
-    
+        return Question.demander_reponse_numerique_utilisateur(self, min, max)
+
+
 class Questionnaire:
     def __init__(self, questions):
         self.questions = questions
@@ -84,16 +85,16 @@ lancer_questionnaire(questionnaire)"""
 # q1 = Question("Quelle est la capitale de la France ?", ("Marseille", "Nice", "Paris", "Nantes", "Lille"), "Paris")
 # q1.poser()
 
-# data = (("Marseille", "Nice", "Paris", "Nantes", "Lille"), "Paris", "Quelle est la capitale de la France ?")
-# q = Question.FromData(data)
+data = (("Marseille", "Nice", "Paris", "Nantes", "Lille"), "Paris", "Quelle est la capitale de la France ?")
+q = Question.FromData(data)
 # print(q.__dict__)
 
-Questionnaire(
+"""Questionnaire(
     (
     Question("Quelle est la capitale de la France ?", ("Marseille", "Nice", "Paris", "Nantes", "Lille"), "Paris"), 
     Question("Quelle est la capitale de l'Italie ?", ("Rome", "Venise", "Pise", "Florence"), "Rome"),
     Question("Quelle est la capitale de la Belgique ?", ("Anvers", "Bruxelles", "Bruges", "Liège"), "Bruxelles")
     )
-).lancer()
+).lancer()"""
 
 
